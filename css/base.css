@@ -1,0 +1,758 @@
+@charset "utf-8";
+
+/******************** global ***********************/
+body{
+	font-size:16px;
+	font-family: 'Open Sans Condensed', Arial, sans-serif;
+	font-weight:normal;
+	background-position:center top;
+}
+.container{
+	width: 960px;
+	margin:0 auto;
+}
+.section{
+	padding:80px 0;
+	width:100%;
+}
+.section h2{
+	color:#65522a;
+	font-weight:bold;
+	padding:0 50px 20px 50px;
+	border-bottom:1px solid #65522a;
+	text-transform:uppercase;
+	text-align:center;
+	width:30%;
+	margin: 0 auto 50px auto;
+	font-size:40px;
+}
+.dark_bg{
+	background-color:#d9cab3;
+	box-shadow:0px 5px 10px 0px rgba(0,0,0,0.5) inset, 0px -5px 10px 0px rgba(0,0,0,0.5) inset;
+}
+.light_bg{
+	background-color:#e4e4e4;
+	border-top:2px solid #ffffff;
+	border-bottom:2px solid #ffffff;
+}
+.link{
+	cursor:pointer;
+	color:inherit;
+	text-decoration:none;
+	user-select: none;
+	
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+}
+.clear{
+	clear:both;
+	float:none;
+}
+
+.button{
+	padding:15px 20px;
+	font-weight:bold;
+	text-align:center;
+	color:#ffffff;
+	border-radius:5px;
+	border:1px solid #860065;
+	text-transform:uppercase;
+	font-size:20px;
+	text-shadow:0px 1px 0px rgba(0,0,0,0.5);
+	box-shadow:0px 0px 10px 0px #e0468c inset;
+	
+
+	background: #d03378;
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2QwMzM3OCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNhOTFkNWMiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+	background: -moz-linear-gradient(top, #d03378 0%, #a91d5c 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d03378), color-stop(100%,#a91d5c));
+	background: -webkit-linear-gradient(top, #d03378 0%,#a91d5c 100%);
+	background: -o-linear-gradient(top, #d03378 0%,#a91d5c 100%);
+	background: -ms-linear-gradient(top, #d03378 0%,#a91d5c 100%);
+	background: linear-gradient(to bottom, #d03378 0%,#a91d5c 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d03378', endColorstr='#a91d5c',GradientType=0 );
+}
+
+.button:hover{
+	background: #ce427e;
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIyJSIgc3RvcC1jb2xvcj0iI2NlNDI3ZSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijk5JSIgc3RvcC1jb2xvcj0iI2E4Mzc2YSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+	background: -moz-linear-gradient(top, #ce427e 2%, #a8376a 99%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,#ce427e), color-stop(99%,#a8376a));
+	background: -webkit-linear-gradient(top, #ce427e 2%,#a8376a 99%);
+	background: -o-linear-gradient(top, #ce427e 2%,#a8376a 99%);
+	background: -ms-linear-gradient(top, #ce427e 2%,#a8376a 99%);
+	background: linear-gradient(to bottom, #ce427e 2%,#a8376a 99%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ce427e', endColorstr='#a8376a',GradientType=0 );
+}
+
+.button:active{
+	box-shadow:0px 0px 10px 0px #A51757 inset;
+}
+.price{
+	padding:15px 20px;
+	font-weight:bold;
+	text-align:center;
+	color:#ffffff;
+	border-radius:5px;
+	border:1px solid #860065;
+	text-transform:uppercase;
+	font-size:22px;
+	text-shadow:0px 1px 0px rgba(0,0,0,0.5);
+	box-shadow:0px 0px 10px 0px #e0468c inset;
+	
+
+	background: #d03378;
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2QwMzM3OCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNhOTFkNWMiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+	background: -moz-linear-gradient(top, #d03378 0%, #a91d5c 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d03378), color-stop(100%,#a91d5c));
+	background: -webkit-linear-gradient(top, #d03378 0%,#a91d5c 100%);
+	background: -o-linear-gradient(top, #d03378 0%,#a91d5c 100%);
+	background: -ms-linear-gradient(top, #d03378 0%,#a91d5c 100%);
+	background: linear-gradient(to bottom, #d03378 0%,#a91d5c 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d03378', endColorstr='#a91d5c',GradientType=0 );
+}
+
+.rotate0{
+	-webkit-transform:rotate(0deg);
+	-webkit-transition:0,5s;
+	-webkit-transform-origin:center center;
+	transform:rotate(0deg);
+	transition:0.5s;
+	transform-origin:center center;
+}
+.rotate90{
+	-webkit-transform:rotate(90deg);
+	-webkit-transition:0,5s;
+	-webkit-transform-origin:center center;
+	transform:rotate(90deg);
+	transition:0.5s;
+	transform-origin:center center;
+}
+/******************** global ***********************/
+
+
+
+
+/******************** header ***********************/
+header.nav_header{
+	position:fixed;
+	background-image:url(../images/nav_pattern.jpg);
+	background-repeat:repeat;
+	border-bottom:2px solid #bd971a;
+	background-size: 2%;
+	
+	width:100%;
+	z-index:999;
+}
+
+header.nav_header nav img{
+	height:60px;
+	width:auto;
+}
+
+header.nav_header nav ul{
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+}
+header.nav_header nav li{
+	display:inline-block;
+	margin: auto;
+	
+	padding:10px 10px;	
+	text-align:center;
+	
+	cursor:pointer;
+	
+	color:#57291c;
+	font-size:20px;
+	text-shadow:0px 1px 0px #ffffff;
+	text-transform:uppercase;
+}
+header.nav_header nav li:hover{
+	color:#d67961;
+	text-shadow:none;
+}
+header.nav_header nav li span{
+	top: 18px;
+	position: relative;
+}
+header.nav_header nav li.separator{
+	height:25px;
+	width:1px;
+	
+	border-left:1px solid #dbb876;
+	border-right:1px solid #f9ecca;
+	padding:0;
+}
+/******************** header ***********************/
+
+
+
+/******************** hero ***********************/
+.hero{
+	background-image:url(../images/hero.jpg);
+	width:100%;
+	height:400px;
+	background-position:20% center;
+	background-repeat:no-repeat;
+	background-size:cover;
+	border-bottom:2px solid #ffffff;
+	position:relative;
+	z-index:1;
+	padding-top:80px;
+}
+.hero .text_container{
+	float:right;
+	margin-top:50px;
+}
+.hero h1{
+	font-weight:bold;
+	font-size:60px;
+	color:#ffffff;
+	text-transform:uppercase;
+}
+.hero p{
+	color:#ffffff;
+	text-transform:uppercase;
+	font-size:28px;
+	margin:20px 0 30px 0;
+	line-height:130%;
+	letter-spacing:150%;
+}
+.hero .button{
+	width:60%;
+}
+/******************** hero ***********************/
+
+
+
+/******************** promocje **********************/
+.promocje .discounts_photogallery{
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+}
+.promocje .discounts_photogallery a > figure{
+	background-position:center center;
+	background-repeat:no-repeat;
+	width:300px;
+	height:210px;
+	margin:auto;
+	overflow:hidden;
+	border:2px solid #ab9d76;
+	margin-bottom:20px;
+}
+.promocje .discounts_photogallery a > figure#zloto{
+	background-image:url(../images/promocje/zloto.jpg);
+}
+.promocje .discounts_photogallery a > figure#owoce{
+	background-image:url(../images/promocje/owoce.jpg);
+}
+.promocje .discounts_photogallery a > figure#hammam{
+	background-image:url(../images/promocje/hammam.jpg);
+}
+.promocje .discounts_photogallery a > figure#sauna{
+	background-image:url(../images/promocje/sauna.jpg);
+}
+.promocje .discounts_photogallery a > figure .promo_container{
+	background-color:rgba(163,131,93,0.95);
+	position:relative;
+	top: 135px;
+
+}
+.promocje .discounts_photogallery a > figure .promo_container figcaption{
+	padding:10px 0;
+	width:90%;
+	height:190px;
+	margin:0 auto;
+}
+.promocje .discounts_photogallery a > figure .promo_container figcaption .price{
+	float:right;
+}
+.promocje .discounts_photogallery a > figure .promo_container h3{
+	color:#ffffff;
+	font-size:25px;
+	width:50%;
+	float:left;
+	font-weight:normal;
+}
+.promocje .discounts_photogallery a > figure .promo_container ul{
+	margin-top:10px;
+}
+.promocje .discounts_photogallery a > figure .promo_container li{
+	padding:3px 0;
+	font-size:20px;
+	color:#ffecde;
+}
+
+.promocje .discounts_textgallery{
+	margin-top:30px;
+}
+.promocje .discounts_textgallery ul{
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+}
+.promocje .discounts_textgallery li{
+	width:470px;
+	margin:6px 0;
+}
+.promocje .discounts_textgallery li:hover{
+	opacity:0.7;
+}
+.promocje .discounts_textgallery .head{
+	background-color:#a89982;
+}
+.promocje .discounts_textgallery .head h3{
+	float:left;
+	color:#ffffff;
+	padding:16px 20px;
+	font-size:20px;
+	font-weight:normal;
+	width:60%;
+}
+.promocje .discounts_textgallery .head .price{
+	float:right;
+}
+
+.promocje .discounts_textgallery .description{
+	background-color:#c4b69c;
+}
+.promocje .discounts_textgallery .description p{
+	float:left;
+	color:#ffffff;
+	padding:10px 20px;
+	font-size:20px;
+	width:70%;
+}
+/******************** promocje **********************/
+
+
+
+
+/******************** zabiegi **********************/
+.zabiegi .block_text{
+	background-color:#ffffff;
+	border-radius:5px;
+	border:1px solid #ae9c78;
+	width:450px;
+	float:left;
+	padding:30px;
+	
+}
+.zabiegi .block_text p{
+	line-height:150%;
+	font-size:16px;
+	color:#635739;
+}
+.zabiegi .treatments_gallery{
+	margin-top:30px;
+}
+.zabiegi .treatments_gallery ul{
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+}
+.zabiegi .treatments_gallery li{
+	width:460px;
+	height:325px;
+	
+	background-position:center center;
+	background-repeat:no-repeat;
+	
+	border: 2px solid #af9b76;
+	margin: auto;
+	position:relative;
+}
+.zabiegi .treatments_gallery li#zabiegi_twarz{
+	background-image:url(../images/zabiegi/twarz.jpg);
+}
+.zabiegi .treatments_gallery li#zabiegi_cialo{
+	background-image:url(../images/zabiegi/cialo.jpg);
+}
+
+.zabiegi .treatments_gallery li:hover{
+	opacity:0.8;
+}
+.zabiegi .treatments_gallery li figcaption{
+	background-color:rgba(137,61,45,0.8);
+	text-transform:uppercase;
+	color:#ffffff;
+	text-align:center;
+	font-size:30px;
+	position:absolute;
+	bottom:0px;
+	width:100%;
+	padding:10px 0;
+}
+.zabiegi .treatments_subgallery{
+	margin-top:30px;
+	display:none;
+}
+.zabiegi .treatments_subgallery .categories{
+	
+	float:left;
+	background-position:center center;
+	background-repeat:no-repeat;
+}
+.zabiegi .treatments_subgallery .categories figure{
+	width:410px;
+	height:185px;
+	position:relative;
+}
+.zabiegi .treatments_subgallery .categories figure#zabiegi_category_hammam{
+	background-image:url(../images/zabiegi/sub_hammam.jpg);
+}
+.zabiegi .treatments_subgallery .categories figure#zabiegi_category_aktywne{
+	background-image:url(../images/zabiegi/sub_aktywne.jpg);
+}
+.zabiegi .treatments_subgallery .categories figure#zabiegi_category_masazu{
+	background-image:url(../images/zabiegi/sub_masazu.jpg);
+}
+.zabiegi .treatments_subgallery .categories figure#zabiegi_category_uzupelniajace{
+	background-image:url(../images/zabiegi/sub_uzupelniajace.jpg);
+}
+
+.zabiegi .treatments_subgallery .categories figure#zabiegi_category_podstawowe{
+	background-image:url(../images/zabiegi/sub_podstawowe.jpg);
+}
+.zabiegi .treatments_subgallery .categories figure#zabiegi_category_luksusowa{
+	background-image:url(../images/zabiegi/sub_luksusowa.jpg);
+}
+.zabiegi .treatments_subgallery .categories figure#zabiegi_category_aktywna{
+	background-image:url(../images/zabiegi/sub_aktywna.jpg);
+}
+.zabiegi .treatments_subgallery .categories figure#zabiegi_category_kwasami{
+	background-image:url(../images/zabiegi/sub_kwasami.jpg);
+}
+
+.zabiegi .treatments_subgallery .categories figure figcaption{
+	background-color:rgba(184,164,129,0.9);
+	text-transform:uppercase;
+	color:#ffffff;
+	text-align:left;
+	font-size:20px;
+	position:absolute;
+	bottom:0px;
+	width:90%;
+	padding:10px 5%;
+}
+
+.zabiegi .treatments_subgallery .items{
+	width:520px;
+	float:right;
+}
+.zabiegi .zabiegi_middle_border{
+	border:1px dashed #baa683;
+	width:900px;
+	margin:0 auto;
+	margin:30px 0;
+}
+.zabiegi .treatments_subgallery .items article{
+	margin-bottom:5px;
+}
+.zabiegi .treatments_subgallery .items header{
+	background-color:#baa683;
+	
+}
+.zabiegi .treatments_subgallery .items header h3{
+	float:left;
+	padding:17px 10px;
+	color:#ffffff;
+	text-align:left;
+	text-transform:uppercase;
+	font-size: 18px;
+	letter-spacing: -0.5px;
+	font-weight:normal;
+	width:70%;
+}
+.zabiegi .treatments_subgallery .items header .price{
+	float:right;
+	padding: 18px 20px;
+	display: flex;
+	justify-content: space-between;
+	font-size:15px;
+}
+.zabiegi .treatments_subgallery .items header .price p{
+	float:left;
+}
+.zabiegi .treatments_subgallery .items header .price .arrows{
+	float:right;
+	margin-left:10px;
+}
+.zabiegi .treatments_subgallery .items .description{
+	background-color:#ccc3b1;
+	padding:10px;
+	width:95%;
+	margin:0 auto;
+	display:none;
+}
+.zabiegi .treatments_subgallery .items .description p{
+	color:#635739;
+	line-height:130%;
+}
+.zabiegi .treatments_subgallery .items footer{
+	background-color:#a89982;
+	display:none;
+	border-bottom:1px solid #d9cab3;
+}	
+.zabiegi .treatments_subgallery .items footer h3{
+	float: left;
+	padding: 17px 19px;
+	color: #ffffff;
+	text-align: left;
+	text-transform: uppercase;
+	font-size: 16px;
+	font-weight: normal;
+	width: 70%;
+}
+.zabiegi .treatments_subgallery .items footer .price{
+	float:right;
+}
+/******************** zabiegi **********************/
+
+
+/******************** pakiety **********************/
+
+.pakiety .sets_gallery{
+	margin-top:30px;
+}
+.pakiety .sets_gallery > ul{
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+}
+.pakiety .sets_gallery .set_gallery_box{
+	width:460px;
+	height:325px;
+	
+	background-position:center center;
+	background-repeat:no-repeat;
+	
+	border: 2px solid #af9b76;
+	margin: auto;
+	position:relative;
+	margin:10px 0;
+}
+.pakiety .sets_gallery .set_gallery_box#set_1{
+	background-image:url(../images/pakiety/panna_mloda.jpg);
+}
+.pakiety .sets_gallery .set_gallery_box#set_2{
+	background-image:url(../images/pakiety/para_relaks.jpg);
+}
+.pakiety .sets_gallery .set_gallery_box#set_3{
+	background-image:url(../images/pakiety/para_hammam.jpg);
+}
+.pakiety .sets_gallery .set_gallery_box#set_4{
+	background-image:url(../images/pakiety/kobieta_relaks.jpg);
+}
+.pakiety .sets_gallery .set_gallery_box#set_5{
+	background-image:url(../images/pakiety/meski_relaks.jpg);
+}
+.pakiety .sets_gallery .set_gallery_box:hover{
+	opacity:0.8;
+}
+.pakiety .sets_gallery .set_gallery_box figcaption{
+	background-color:rgba(137,61,45,0.8);
+	text-transform:uppercase;
+	color:#ffffff;
+	text-align:center;
+	font-size:30px;
+	position:absolute;
+	bottom:0px;
+	width:100%;
+	padding:10px 0;
+}
+
+.pakiety .sets_gallery .set_gallery_details{
+	margin:10px 0;
+	width:100%;
+	background-image:url(../images/light_pattern.jpg);
+	background-repeat:repeat;
+	display:none;
+}
+.pakiety .sets_gallery .set_gallery_details h3{
+	color:#514a39;
+	text-transform:uppercase;
+	font-size:35px;
+	font-weight:bold;
+}
+.pakiety .sets_gallery .set_gallery_details .description{
+	float:left;
+	padding:20px;
+}
+.pakiety .sets_gallery .set_gallery_details li{
+	display:block;
+	
+	font-size:20px;
+	line-height:150%;
+}
+.pakiety .sets_gallery .set_gallery_details footer{
+	float:right;
+	background-color:#a89982;
+	padding:20px;
+}
+.pakiety .sets_gallery .set_gallery_details footer li{
+	color:#ffffff;
+	padding:5px 0;
+	text-align:center;
+}
+.pakiety .sets_gallery .set_gallery_details footer .price{
+	margin:10px 0;
+}
+
+/******************** pakiety **********************/
+
+/******************** party **********************/
+
+.party .entry_text ul{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: stretch;
+}
+.party .entry_text li{
+	display:inline-block;
+	width:400px;
+	color:#5c5332;
+	line-height:150%;
+}
+.party .party_gallery{
+	margin-top:30px;
+}
+.party .party_gallery > ul{
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+}
+.party .party_gallery li{
+	width:230px;
+	height:160px;
+	
+	background-position:center center;
+	background-repeat:no-repeat;
+	
+	border: 2px solid #af9b76;
+	margin: auto;
+	position:relative;
+	margin:10px 0;
+}
+.party .party_gallery li figure#wieczor_orientalny{
+	width:230px;
+	height:160px;
+	background-image:url(../images/party/taniec.jpg);
+}
+
+.party .party_gallery li figure figcaption{
+	background-color:rgba(137,61,45,0.8);
+	text-transform:uppercase;
+	color:#ffffff;
+	text-align:left;
+	font-size:16px;
+	position:absolute;
+	bottom:0px;
+	width:90%;
+	padding:10px 5%;
+}
+.party .party_gallery li p{
+	margin-top:10px;
+	color:#5c5332;
+	line-height:140%;
+}
+.party footer{
+	margin-top:50px;
+	color:#5c5332;
+	line-height:140%;
+}
+
+/******************** vouchery **********************/
+.vouchery ul{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items:center;
+}
+.vouchery li{
+	width:400px;
+}
+
+.vouchery p{
+	line-height:140%;
+	color:#5c5332;
+}
+/******************** vouchery **********************/
+
+/******************** firmy **********************/
+
+
+.firmy .container > p{
+	line-height:140%;
+	color:#5c5332;
+	width:80%;
+	margin:0 auto;
+}
+.firmy .intext_list li{
+	list-style:square;
+	color:#5c5332;
+	list-style-position:inside;
+	padding:5px 0;
+	width:600px;
+	margin:0 auto;
+	line-height:140%;
+}
+/******************** firmy **********************/
+
+/******************** galeria **********************/
+.galeria ul{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items:center;
+}
+.galeria li{
+	width: 300px;
+	height: 212px;
+	margin: 10px 0;
+	
+	border: 2px solid #5c5332;
+}
+.galeria li img{
+	width:100%;
+	height:auto;
+}
+/******************** galeria **********************/
+
+/******************** kontakt **********************/
+.kontakt{
+	padding:0;
+}
+.kontakt .gmap{
+	width:100%;
+	height:450px;
+}
+.kontakt .dane_kontakt{
+	float:left;
+	position:absolute;
+	z-index:1;
+	padding:30px 100px;
+	margin-top:35px;
+	background-color:rgba(255,255,255,0.8);
+}
+.kontakt .dane_kontakt p{
+	color:#5c5332;
+	font-size:20px;
+	line-height:130%;
+}
+.kontakt .dane_kontakt p small{
+	font-size:18px;
+}
+.kontakt .dane_kontakt p a:hover{
+	color:#a79d7a;
+}
+/******************** kontakt **********************/
